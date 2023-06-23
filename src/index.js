@@ -1,7 +1,5 @@
 import readline from 'node:readline/promises';
-import { parseUsername } from './helpers/parseUsername.js';
-import PathCache from './helpers/pathCache.js';
-import { lineParser } from './helpers/lineParser.js';
+import { parseUsername, lineParser, PathCache } from './helpers/index.js';
 
 
 const rl = readline.createInterface({input: process.stdin, output: process.stdout});

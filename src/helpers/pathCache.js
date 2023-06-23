@@ -11,6 +11,4 @@ class PathCacheSingleton {
         return this._path;
     }
 };
-const PathCache = new PathCacheSingleton();
-
-export default PathCache;
+export const PathCache = new PathCacheSingleton();

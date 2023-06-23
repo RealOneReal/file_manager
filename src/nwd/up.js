@@ -1,6 +1,5 @@
 import path from 'node:path';
-import PathCache from '../helpers/pathCache.js';
-
+import { PathCache } from '../helpers/index.js';
 
 export const up = () => {
     const currentDir = PathCache.getPath();
