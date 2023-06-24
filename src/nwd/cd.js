@@ -1,15 +1,22 @@
 import path from 'node:path';
-import { isExist, PathCache } from '../helpers/index.js';
+import fs from 'node:fs/promises';
+import { INVALID_INPUT, isExist, PathCache } from '../helpers/index.js';
 /**
  * @param {string} input myInput
 */
 export const cd = async (input) => {
     let absolutePath = path.resolve(PathCache.getPath(), input);
-    if(path.basename(absolutePath).includes('.')) {
-        absolutePath = path.dirname(absolutePath);
-    }
-    const isPathExist = await isExist(absolutePath);
-    if(isPathExist) {
-        PathCache.setPath(absolutePath);
+    try {
+        if((await fs.stat(absolutePath)).isFile()) {
+            absolutePath = path.dirname(absolutePath);
+        }
+        const isPathExist = await isExist(absolutePath);
+        if(isPathExist) {
+            PathCache.setPath(absolutePath);
+        } else {
+            console.log(INVALID_INPUT);
+        }
+    } catch(e) {
+        console.log(INVALID_INPUT);
     }
 };
