@@ -1,5 +1,5 @@
 import { up, cd, ls } from '../nwd/index.js';
-import { add, cat, cp, mv, rn } from '../operations/index.js';
+import { add, cat, cp, mv, rn, osFunc, rm } from '../operations/index.js';
 import { INVALID_INPUT } from './constants.js';
 /**
  * @param {string} str myInput
@@ -53,10 +53,15 @@ export const lineParser = async (str) => {
         return;
     }
 
+    if(input.startsWith('rm')) {
+        await rm(input.slice(3));
+        return;
+    }
 
-
-
-
+    if(input.startsWith('os')) {
+        osFunc(input.slice(3));
+        return;
+    }
 
     if(str) {
         console.log(INVALID_INPUT)

@@ -7,6 +7,8 @@ const username = parseUsername();
 
 console.log(`Welcome to the File Manager, ${username}`);
 console.log(`You are currently in ${PathCache.getPath()}`)
+PathCache.setUserName(username);
+
 rl.on('close',() => {
     console.log(`\nThank you for using File Manager, ${username}, goodbye!`)
 });

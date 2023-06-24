@@ -10,5 +10,11 @@ class PathCacheSingleton {
     getPath() {
         return this._path;
     }
+    setUserName(name) {
+        this._username = name;
+    }
+    getUserName() {
+        return this._username;
+    }
 };
 export const PathCache = new PathCacheSingleton();
