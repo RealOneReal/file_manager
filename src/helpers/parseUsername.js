@@ -5,6 +5,6 @@ export const parseUsername = () => {
     if(args.length === 1 && args[0].startsWith('--username=')) {
         return args[0].substring(11);
     } else {
-        throw new Error(INVALID_INPUT);
+        console.log(INVALID_INPUT);
     }
 };

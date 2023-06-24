@@ -1,9 +1,7 @@
 import { up, cd, ls } from '../nwd/index.js';
 import { add, cat, cp, mv, rn, osFunc, rm, hash, compress, decompress } from '../operations/index.js';
 import { INVALID_INPUT } from './constants.js';
-/**
- * @param {string} str myInput
-*/
+
 export const lineParser = async (str) => {
     const input = str.trim();
     if(input.startsWith('up')) {

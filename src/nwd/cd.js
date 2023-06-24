@@ -1,9 +1,7 @@
 import path from 'node:path';
 import fs from 'node:fs/promises';
 import { INVALID_INPUT, isExist, PathCache } from '../helpers/index.js';
-/**
- * @param {string} input myInput
-*/
+
 export const cd = async (input) => {
     let absolutePath = path.resolve(PathCache.getPath(), input);
     try {

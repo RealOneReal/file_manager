@@ -2,9 +2,6 @@ import os from 'node:os';
 import { INVALID_INPUT } from "../helpers/constants.js";
 import { PathCache } from '../helpers/pathCache.js';
 
-/**
- * @param {string} input myInput
-*/
 export const osFunc = (input) => {
     const isFlag = input.startsWith('--');
     if(!isFlag) {

@@ -13,7 +13,7 @@ export const compress = async(input, output) => {
     console.log(destinationPath);
     await pipeline(createReadStream(filePath), createBrotliCompress(), createWriteStream(destinationPath));
 
- }catch(e) {
+ } catch(e) {
     console.log(OPERATION_FAILED);
  }
 };
