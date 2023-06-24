@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import { rm } from 'node:fs/promises';
 import { PathCache } from "../helpers/pathCache.js";
 import { pipeline } from 'node:stream/promises';
-import { INVALID_INPUT } from '../helpers/constants.js';
+import { OPERATION_FAILED } from '../helpers/constants.js';
 
 export const mv = async(oldPath, newPath) => {
     try {
@@ -15,7 +15,7 @@ export const mv = async(oldPath, newPath) => {
         await pipeline(readStream,writeStream);
         await rm(from);
     } catch(e) {
-        console.log(INVALID_INPUT);
+        console.log(OPERATION_FAILED);
         console.log(e);
     }
 };

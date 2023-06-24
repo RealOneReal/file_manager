@@ -2,7 +2,7 @@ import path from 'node:path';
 import fs from 'node:fs';
 import { PathCache } from "../helpers/pathCache.js";
 import { pipeline } from 'node:stream/promises';
-import { INVALID_INPUT } from '../helpers/constants.js';
+import { OPERATION_FAILED } from '../helpers/constants.js';
 
 export const cp = async(oldPath, newPath) => {
     try {
@@ -13,6 +13,6 @@ export const cp = async(oldPath, newPath) => {
         const writeStream = fs.createWriteStream(to);
         await pipeline(readStream,writeStream);
     } catch(e) {
-        console.log(INVALID_INPUT);
+        console.log(OPERATION_FAILED);
     }
 };
