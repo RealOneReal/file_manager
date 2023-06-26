@@ -16,6 +16,5 @@ export const mv = async(oldPath, newPath) => {
         await rm(from);
     } catch(e) {
         console.log(OPERATION_FAILED);
-        console.log(e);
     }
 };

@@ -10,7 +10,6 @@ export const compress = async(input, output) => {
     const filePath = path.resolve(PathCache.getPath(), input);
     const fileName = path.basename(filePath) + '.br';
     const destinationPath = path.resolve(PathCache.getPath(), output, fileName);
-    console.log(destinationPath);
     await pipeline(createReadStream(filePath), createBrotliCompress(), createWriteStream(destinationPath));
 
  } catch(e) {

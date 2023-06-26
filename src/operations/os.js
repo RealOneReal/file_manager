@@ -8,7 +8,6 @@ export const osFunc = (input) => {
         console.log(INVALID_INPUT);
         return
     }
-    const flag = input.slice(2);
     switch (input.slice(2)) {
         case 'EOL':
             console.log(os.EOL)

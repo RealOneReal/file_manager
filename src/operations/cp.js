@@ -4,6 +4,8 @@ import { PathCache } from "../helpers/pathCache.js";
 import { pipeline } from 'node:stream/promises';
 import { OPERATION_FAILED } from '../helpers/constants.js';
 
+import { cpus } from 'node:os';
+cpus
 export const cp = async(oldPath, newPath) => {
     try {
         const from = path.resolve(PathCache.getPath(), oldPath);

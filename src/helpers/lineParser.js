@@ -1,82 +1,64 @@
 import { up, cd, ls } from '../nwd/index.js';
 import { add, cat, cp, mv, rn, osFunc, rm, hash, compress, decompress } from '../operations/index.js';
 import { INVALID_INPUT } from './constants.js';
+import { parseCommand } from './parseCommand.js';
 
 export const lineParser = async (str) => {
-    const input = str.trim();
-    if(input.startsWith('up')) {
+    const { command, source = '', destination = '' } = parseCommand(str.trim());
+    if(command === 'up') {
         up();
         return;
     }
-    if(input.startsWith('cd')) {
-        await cd(input.slice(3));
+    if(command === 'cd') {
+        await cd(source);
         return;
     }
-    if(input.startsWith('ls')) {
+    if(command === 'ls') {
         await ls();
         return;
     }
-    if(input.startsWith('cat')) {
-        await cat(input.slice(4));
+    if(command === 'cat') {
+        await cat(source);
         return;
     }
-    if(input.startsWith('add')) {
-        await add(input.slice(4));
+    if(command === 'add') {
+        await add(source);
         return;
     }
-    if(input.startsWith('rn')) {
-        const space = input.indexOf(' ', 3);
-        const fileOld = input.slice(3,space);
-        const fileNew = input.slice(space + 1);
-       
-        await rn(fileOld, fileNew);
+    if(command === 'rn') {
+        await rn(source, destination);
         return;
     }
-    if(input.startsWith('cp')) {
-        const space = input.indexOf(' ', 3);
-        const fileOld = input.slice(3,space);
-        const fileNew = input.slice(space + 1);
-       
-        await cp(fileOld, fileNew);
+    if(command === 'cp') {
+        await cp(source, destination);
         return;
     }
-    if(input.startsWith('mv')) {
-        const space = input.indexOf(' ', 3);
-        const fileOld = input.slice(3,space);
-        const fileNew = input.slice(space + 1);
-       
-        await mv(fileOld, fileNew);
+    if(command === 'mv') {
+        await mv(source, destination);
         return;
     }
-    if(input.startsWith('rm')) {
-        await rm(input.slice(3));
+    if(command === 'rm') {
+        await rm(source);
         return;
     }
-    if(input.startsWith('os')) {
-        osFunc(input.slice(3));
+    if(command === 'os') {
+        osFunc(source);
         return;
     }
-    if(input.startsWith('hash')) {
-        await hash(input.slice(5));
+    if(command === 'hash') {
+        await hash(source);
         return;
     }
-    if(input.startsWith('compress')) {
-        const space = input.indexOf(' ', 9);
-        const fileOld = input.slice(9,space);
-        const fileNew = input.slice(space + 1);
-        await compress(fileOld, fileNew);
+    if(command === 'compress') {
+        await compress(source, destination);
         return;
     }
-    if(input.startsWith('decompress')) {
-        const space = input.indexOf(' ', 11);
-        const fileOld = input.slice(11,space);
-        const fileNew = input.slice(space + 1);
-        await decompress(fileOld, fileNew);
+    if(command === 'decompress') {
+        await decompress(source, destination);
         return;
     }
 
     if(str) {
         console.log(INVALID_INPUT)
-        return;
     }
 };
